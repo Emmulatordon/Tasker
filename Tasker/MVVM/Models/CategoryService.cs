@@ -15,7 +15,8 @@ namespace Tasker.MVVM.Models
             {
                 new Category(){Id=1,CategoryName=".Net MAUI Course",Color="#cf14df"},
                 new Category(){Id=2,CategoryName="Tutorials",Color="#df6f14"},
-                new Category(){Id=3,CategoryName="Shopping",Color="#14df80"}
+                new Category(){Id=3,CategoryName="Shopping",Color="#14df80"},
+                new Category(){Id=4,CategoryName="Farming",Color="#14b680"}
 
             };
         }
