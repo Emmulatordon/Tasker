@@ -23,6 +23,16 @@
         <Setter Property="FontSize" Value="Medium" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
+    <Shadow x:Key="shadow" Brush="#cfd0d4"
+            Opacity="0.6"
+            Offset="10,15"
+            Radius="15"/>
+    <Style TargetType="RoundRectangle">
+        <Setter Property="Fill" Value="White" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="WidthRequest" Value="200" />
+        <Setter Property="Shadow" Value="{StaticResource shadow}" />
+    </Style>
 
 
 
