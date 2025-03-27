@@ -32,6 +32,33 @@
                 </CollectionView.ItemTemplate>                
             </CollectionView>
         </Grid>
-        <Grid Grid.Row="2" BackgroundColor="DarkGoldenrod" />
+        <Grid Grid.Row="2" RowDefinitions=".2*,.8*">
+            <Label Text="PENDING TASKS" StyleClass="LightBlue,SubHeader" />
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Tasks}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:MyTask">
+                        <Frame BorderColor="Transparent" HeightRequest="60">
+                            <HorizontalStackLayout>
+                                <CheckBox IsChecked="{Binding Completed}"
+                                          x:Name="ckbCompleted"
+                                          CheckedChanged="ckbCompleted_CheckedChanged"
+                                          Color="{Binding TaskColor, Converter={StaticResource ColorConv}}"
+                                          VerticalOptions="Center" />
+                                <Label Text="{Binding TaskName}"
+                                       VerticalOptions="Center" >
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                     Binding="{Binding Source={x:Reference ckbCompleted},Path=IsChecked}"
+                                                     Value="true">
+                                            <Setter Property="TextDecorations" Value="Strikethrough"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>                
+            </CollectionView>
+        </Grid>
     </Grid>
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,6 +9,8 @@ using Tasker.MVVM.Models;
 
 namespace Tasker.MVVM.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
+
     public class MainViewModel
     {
         public ObservableCollection<Category> Categories { get; set; }
@@ -18,7 +21,7 @@ namespace Tasker.MVVM.ViewModels
             UpdateData();
         }
 
-        private void UpdateData()
+        public void UpdateData()
         {
             foreach (var c in Categories)
             {
@@ -26,7 +29,7 @@ namespace Tasker.MVVM.ViewModels
                 var completed = from t in tasks where t.Completed == true select t;    
                 var notCompleted = from t in tasks where t.Completed == false select t;  
                 c.PendingTasks = notCompleted.Count();
-                c.Percentage = (float)completed.Count()/ (float)notCompleted.Count();
+                c.Percentage = (float)completed.Count()/ (float)tasks.Count();
             }
             foreach (var t in Tasks)
             {
