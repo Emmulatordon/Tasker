@@ -6,7 +6,7 @@
              xmlns:model="clr-namespace:Tasker.MVVM.Models"
              x:Class="Tasker.MVVM.Views.MainView"
              x:DataType="viewmodel:MainViewModel"
-             Title="MainView">
+             Title="Tasker">
     <ContentPage.Resources>
         <converters:ColorConverter x:Key="ColorConv" />
     </ContentPage.Resources>
@@ -60,5 +60,7 @@
                 </CollectionView.ItemTemplate>                
             </CollectionView>
         </Grid>
+        <Button Text="+" Grid.Row="2" Style="{StaticResource CircularButton}"
+                Clicked="Button_Clicked" />
     </Grid>
 </ContentPage>

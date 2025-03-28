@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Tasker.MVVM.ViewModels"
+             xmlns:model="clr-namespace:Tasker.MVVM.Models"
+             x:Class="Tasker.MVVM.Views.NewTaskView"
+             x:DataType="viewmodel:NewTaskViewModel"
+             Title="Add New Task">
+    <Grid RowDefinitions=".2*,.7*,.1*">
+        <Entry Placeholder="Enter New Task"
+               Style="{StaticResource Task}"
+               Text="{Binding TaskName }"/>
+        <CollectionView Grid.Row="1" Margin="15" ItemsSource="{Binding Categories}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5"
+                                 Orientation="Vertical"
+                                 Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Category">
+                    <Frame>
+                        <RadioButton Content="{Binding CategoryName}"
+                                     GroupName="Category"
+                                     IsChecked="{Binding IsSelected}" />
+                    </Frame> 
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <HorizontalStackLayout Grid.Row="2" VerticalOptions="Center"
+                               HorizontalOptions="CenterAndExpand"
+                               Spacing="15"
+                               Margin="10">
+            <Button Text="Add Task" CornerRadius="15" />
+            <Button Text="Add Category" CornerRadius="15" />
+
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>
